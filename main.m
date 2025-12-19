@@ -1,5 +1,13 @@
 % main.m
 
+% document path and toolboxes
+
+path
+
+ver
+
+computer
+
 % Create results directory
 
 if ~exist('results', 'dir')
@@ -8,9 +16,9 @@ end
 
 % Run the MATLAB test script
 
-test-matlab
+run('test-matlab.m')
 
 % Run the Dynare test script
 
-test-dynare
+run('test-dynare.m')
 
