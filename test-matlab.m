@@ -24,4 +24,4 @@ ylabel('Fatal traffic accidents per state')
 title('Linear Regression Relation Between Accidents & Population')
 grid on
 % save figure
-saveas(gcf,'linear_regression_accidents_population.png')
+saveas(gcf,fullfile('results','linear_regression_accidents_population.png'))
