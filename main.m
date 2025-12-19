@@ -16,9 +16,9 @@ end
 
 % Run the MATLAB test script
 
-run('test-matlab.m')
+run('test_matlab.m')
 
 % Run the Dynare test script
 
-run('test-dynare.m')
+run('test_dynare.m')
 
