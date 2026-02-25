@@ -1,5 +1,50 @@
 % From https://www.mathworks.com/help/matlab/data_analysis/linear-regression.html
 %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% This captures the version of Matlab and its installed toolboxes.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ver
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% display the search path
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+path
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Setup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+scenario = "B"
+
+%%% this dynamically captures the rootdir
+
+[mydir, thisFileName, ~ ] = fileparts(mfilename('fullpath'))
+
+if ~exist('configdone','var')
+% do initial config
+    if scenario == "A"
+        cd ..
+        rootdir = pwd
+        cd(mydir)
+    else
+        rootdir = mydir
+    end
+    configdone = 'TRUE'
+end
+
+%%% Directories
+
+results = fullfile(rootdir,'results');
+% ensure it exists
+if ~exist(results,'dir')
+    mkdir(results)
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Analysis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % From the dataset accidents, load accident data in y and state population data in x. Find the linear regression relation y=β1x between the accidents in a state and the population of a state using the \ operator. The \ operator performs a least-squares regression.
 
 load accidents
@@ -24,4 +69,4 @@ ylabel('Fatal traffic accidents per state')
 title('Linear Regression Relation Between Accidents & Population')
 grid on
 % save figure
-saveas(gcf,fullfile('results','linear_regression_accidents_population.png'))
+saveas(gcf,fullfile(results,'linear_regression_accidents_population.png'))
